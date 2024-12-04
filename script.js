@@ -1,3 +1,23 @@
+function playRound() {
+    let humanChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
+
+    if (humanChoice === computerChoice) {
+        console.log("It's a tie! Try again");
+    } else if ( (humanChoice === "Rock") && (computerChoice === "Scissors") ) {
+        humanScore++;
+        console.log("You win! Rock beats Scissors!");
+    } else if ( (humanChoice === "Rock") && (computerChoice === "Paper") ) {
+        computerScore++;
+        console.log("You lose! Paper beats Rock!");
+    } else {
+        alert("I still need to write this!");
+    }
+}
+
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3);
 
