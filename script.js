@@ -3,18 +3,15 @@ let computerScore = 0;
 
 function playGame() {
 
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-
-
-    playRound(humanSelection, computerSelection);
-    playRound(humanSelection, computerSelection);
-    playRound(humanSelection, computerSelection);
-    playRound(humanSelection, computerSelection);
-    playRound(humanSelection, computerSelection);
+    for (let i = 0; i < 5; i++) {
+          const humanSelection = getHumanChoice();
+          const computerSelection = getComputerChoice();
+        
+        playRound(humanSelection, computerSelection);
+    }
 
     function playRound(humanChoice, computerChoice) {
-
+        
         if (humanChoice === computerChoice) {
             console.log("It's a tie! Try again");
         } else if ( (humanChoice === "Rock") && (computerChoice=== "Scissors") ) {
@@ -48,6 +45,7 @@ function playGame() {
 }
 
 function getComputerChoice() {
+
     let randomNumber = Math.floor(Math.random() * 3);
 
         if (randomNumber === 0) {
@@ -56,7 +54,7 @@ function getComputerChoice() {
             return "Paper";
         } else {
             return "Scissors";
-        }
+        }   
 }
 
 function getHumanChoice() {
