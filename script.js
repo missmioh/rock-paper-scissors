@@ -1,14 +1,13 @@
 let humanScore = 0;
 let computerScore = 0;
 
-function playGame() {
+function playGame(thing) {
 
-    for (let i = 0; i < 5; i++) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        
-        playRound(humanSelection, computerSelection);
+    if (thing === "Rock") {
+        playRound("Rock", getComputerChoice());
     }
+    
+//    rockBtn.addEventListener("click", playRound("Rock", getComputerChoice()));
 
     function playRound(humanChoice, computerChoice) {
         
@@ -73,3 +72,32 @@ function getHumanChoice() {
             alert("Please type only 'Rock', 'Paper' or 'Scissors!'");
         }
 }
+
+const container = document.querySelector("#container");
+
+const rockBtn = document.createElement("button");
+rockBtn.setAttribute("id", "Rock");
+rockBtn.textContent = "Rock";
+const paperBtn = document.createElement("button");
+paperBtn.setAttribute("id", "paperButton");
+paperBtn.textContent = "Paper";
+const scissorsBtn = document.createElement("button");
+scissorsBtn.setAttribute("id", "scissorsButton");
+scissorsBtn.textContent = "Scissors";
+
+container.appendChild(rockBtn);
+container.appendChild(paperBtn);
+container.appendChild(scissorsBtn);
+
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+        let playerSelection = e.target.id;
+        playGame(playerSelection);
+    });
+});
+
+const result = document.createElement("div");
+result.setAttribute("id", "gameResult");
+
