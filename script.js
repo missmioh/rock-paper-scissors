@@ -1,13 +1,18 @@
 let humanScore = 0;
 let computerScore = 0;
 
-function playGame(thing) {
+function playGame(clickSelection) {
 
-    if (thing === "Rock") {
+    if (clickSelection === "Rock") {
         playRound("Rock", getComputerChoice());
+    } else if (clickSelection === "Paper") {
+        playRound("Paper", getComputerChoice());
+    } else if (clickSelection === "Scissors") {
+        playRound("Scissors", getComputerChoice());
+    } else {
+        console.log("Error!");
     }
     
-//    rockBtn.addEventListener("click", playRound("Rock", getComputerChoice()));
 
     function playRound(humanChoice, computerChoice) {
         
@@ -79,10 +84,10 @@ const rockBtn = document.createElement("button");
 rockBtn.setAttribute("id", "Rock");
 rockBtn.textContent = "Rock";
 const paperBtn = document.createElement("button");
-paperBtn.setAttribute("id", "paperButton");
+paperBtn.setAttribute("id", "Paper");
 paperBtn.textContent = "Paper";
 const scissorsBtn = document.createElement("button");
-scissorsBtn.setAttribute("id", "scissorsButton");
+scissorsBtn.setAttribute("id", "Scissors");
 scissorsBtn.textContent = "Scissors";
 
 container.appendChild(rockBtn);
