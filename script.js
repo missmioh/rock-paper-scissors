@@ -80,6 +80,8 @@ function getHumanChoice() {
 
 const container = document.querySelector("#container");
 
+// create and add buttons
+
 const rockBtn = document.createElement("button");
 rockBtn.setAttribute("id", "Rock");
 rockBtn.textContent = "Rock";
@@ -96,6 +98,15 @@ container.appendChild(scissorsBtn);
 
 const buttons = document.querySelectorAll("button");
 
+// create and add div for results
+
+const result = document.createElement("div");
+result.setAttribute("id", "gameResult");
+
+container.appendChild(result);
+
+// click event listener for buttons
+
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
         let playerSelection = e.target.id;
@@ -103,6 +114,4 @@ buttons.forEach((button) => {
     });
 });
 
-const result = document.createElement("div");
-result.setAttribute("id", "gameResult");
 
