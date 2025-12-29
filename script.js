@@ -17,36 +17,39 @@ function playGame(clickSelection) {
     function playRound(humanChoice, computerChoice) {
         
         if (humanChoice === computerChoice) {
-            console.log(`${humanChoice} twice, it's a tie! Try again`);
+            result.textContent = `${humanChoice} twice, it's a tie! Try again`;
         } else if ( (humanChoice === "Rock") && (computerChoice=== "Scissors") ) {
             humanScore++;
-            console.log("You win! Rock beats Scissors!");
+            result.textContent = `You win! Rock beats Scissors!`;
         } else if ( (humanChoice === "Rock") && (computerChoice === "Paper") ) {
             computerScore++;
-            console.log("You lose! Paper beats Rock!");
+            result.textContent = `You lose! Paper beats Rock!`;
         } else if ( (humanChoice === "Paper") && (computerChoice === "Scissors") ) {
             computerScore++;
-            console.log("You lose! Scissors beat Paper!");
+            result.textContent = `You lose! Scissors beat Paper!`;
         } else if ( (humanChoice === "Paper") && (computerChoice === "Rock") ) {
             humanScore++;
-            console.log("You win! Paper beats Rock!");
+            result.textContent = `You win! Paper beats Rock!`;
         } else if ( (humanChoice === "Scissors") && (computerChoice === "Paper") ) {
             humanScore++;
-            console.log("You win! Scissors beat Paper!");
+            result.textContent = `You win! Scissors beat Paper!`;
         } else if ( (humanChoice === "Scissors") && (computerChoice === "Rock") ) {
             computerScore++;
-            console.log("You lose! Rock beats Scissors!");
+            result.textContent = `You lose! Rock beats Scissors!`;
         } else {
             playRound(getHumanChoice(), getComputerChoice());
         }
     }
 
+    const pointsTracker = document.createElement("div");
+    result.appendChild(pointsTracker);
+
     if (humanScore > computerScore) {
-        console.log(`Congratulations, you win with ${humanScore} points!`);
+        pointsTracker.textContent = `Congratulations, you win with ${humanScore} points!`;
     } else if (humanScore < computerScore) {
-        console.log(`You lose ${computerScore}/${humanScore}, game over!`);
+        pointsTracker.textContent = `You lose ${computerScore}/${humanScore}, game over!`;
     } else {
-        console.log("It's a tie!");
+        pointsTracker.textContent = `It's a tie! ${computerScore}/${humanScore}`;
     }
 }
 
@@ -96,8 +99,6 @@ container.appendChild(rockBtn);
 container.appendChild(paperBtn);
 container.appendChild(scissorsBtn);
 
-const buttons = document.querySelectorAll("button");
-
 // create and add div for results
 
 const result = document.createElement("div");
@@ -106,6 +107,8 @@ result.setAttribute("id", "gameResult");
 container.appendChild(result);
 
 // click event listener for buttons
+
+const buttons = document.querySelectorAll("button");
 
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
