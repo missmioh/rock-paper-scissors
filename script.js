@@ -12,7 +12,6 @@ function playGame(clickSelection) {
     } else {
         console.log("Error!");
     }
-    
 
     function playRound(humanChoice, computerChoice) {
         
@@ -41,15 +40,24 @@ function playGame(clickSelection) {
         }
     }
 
-    const pointsTracker = document.createElement("div");
-    result.appendChild(pointsTracker);
-
     if (humanScore > computerScore) {
         pointsTracker.textContent = `Congratulations, you win with ${humanScore} points!`;
     } else if (humanScore < computerScore) {
         pointsTracker.textContent = `You lose ${computerScore}/${humanScore}, game over!`;
     } else {
         pointsTracker.textContent = `It's a tie! ${computerScore}/${humanScore}`;
+    }
+
+    if (humanScore === 5) {
+        pointsTracker.textContent = `That's it, you won!`
+        humanScore = 0;
+        computerScore = 0;
+        container.removeChild(result);
+    } else if (computerScore === 5) {
+        pointsTracker.textContent = `Game over, you lose.`
+        humanScore = 0;
+        computerScore = 0;
+        container.removeChild(result);
     }
 }
 
@@ -99,12 +107,15 @@ container.appendChild(rockBtn);
 container.appendChild(paperBtn);
 container.appendChild(scissorsBtn);
 
-// create and add div for results
+// create and add divs for results
 
 const result = document.createElement("div");
-result.setAttribute("id", "gameResult");
 
 container.appendChild(result);
+
+const pointsTracker = document.createElement("div");
+
+container.appendChild(pointsTracker);
 
 // click event listener for buttons
 
